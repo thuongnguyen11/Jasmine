@@ -1,0 +1,19 @@
+# dependencies
+node_modules
+bower_components
+
+# compiled output
+/dist
+/.tmp
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Theme config file
+.env
+config.yml
+shopify.theme.toml
+package-lock
+
+/dev

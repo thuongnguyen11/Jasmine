@@ -1,0 +1,46 @@
+{
+  "name": "root",
+  "version": "2.0.0",
+  "description": "Shopify theme build assets",
+  "author": "Arenacommerce",
+  "license": "ISC",
+  "type": "module",
+  "main": "server.js",
+  "config": {
+    "dev_tool": "themekit"
+  },
+  "scripts": {
+    "build:css": "cross-env BUILD_STYLESHEET=false node server.js",
+    "build:js": "cross-env BUILD_SCRIPT=false node server.js",
+    "start": "cross-env DEV_TOOL=$npm_package_config_dev_tool concurrently \"nodemon -w .env -w server.js -w findString.js server.js\" \"npm run dev:$npm_package_config_dev_tool\"",
+    "dev:themekit": "theme watch -a --allow-live --notify=.tmp/theme.update",
+    "dev:cli": "shopify theme dev -e default",
+    "dev:both": "concurrently \"npm run dev:themekit\" \"npm run dev:cli\" ",
+    "pull": "shopify theme pull -s=$npm_package_config_store",
+    "locales": "node fileLocaleUnuse.js",
+    "files": "node readSnippets.js"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "chokidar": "^3.5.3",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "esbuild": "^0.19.8",
+    "esbuild-sass-plugin": "^2.16.0",
+    "nodemon": "^3.0.2",
+    "postcss": "^8.4.32"
+  },
+  "dependencies": {
+    "@shopify/theme-sections": "^4.0.2",
+    "@turf/turf": "^7.1.0",
+    "fastclick": "^1.0.6",
+    "filterizr": "^2.2.4",
+    "jquery": "^3.6.4",
+    "lazysizes": "^5.3.0-beta1",
+    "nouislider": "^15.7.0",
+    "swiper": "^10.0.4",
+    "vanilla-sharing": "^6.1.1",
+    "localforage": "^1.10.0"
+  }
+}
